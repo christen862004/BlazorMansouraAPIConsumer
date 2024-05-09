@@ -6,10 +6,11 @@ namespace BlazorMansouraAPIConsumer.Services
     public class EmployeeService : IService<Employee>
     {
         HttpClient client;
-        public EmployeeService()
+        public EmployeeService(HttpClient client)//inject ==>register
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:63289");
+            this.client = client;
+            //client = new HttpClient();//dont create but ask (inject)
+            //client.BaseAddress = new Uri("http://localhost:63289");
         }
 
         public async Task Delete(int id)
